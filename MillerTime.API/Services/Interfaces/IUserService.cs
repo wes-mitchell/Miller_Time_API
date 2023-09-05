@@ -7,5 +7,7 @@ namespace MillerTime.API.Services.Interfaces
         List<User> GetAllUsers();
 
         User GetUserById(int id);
+
+        Task<User> AddUser(User user);
     }
 }

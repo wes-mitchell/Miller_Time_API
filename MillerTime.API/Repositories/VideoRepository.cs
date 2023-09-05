@@ -19,9 +19,12 @@ namespace MillerTime.API.Repositories
             return videos;
         }
 
-        public async Task AddVideo(Video video) { 
+        public async Task<Video> AddVideo(Video video) 
+        { 
             _mtContext.Videos.Add(video);
             await _mtContext.SaveChangesAsync();
+            return video;
         }
+
     }
 }

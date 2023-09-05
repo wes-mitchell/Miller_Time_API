@@ -19,8 +19,16 @@ namespace MillerTime.API.Repositories
             return users;
         }
 
-        public User GetUserById(int userId) {
+        public User GetUserById(int userId) 
+        {
             var user = _mtContext.Users.Where(x => x.Id == userId).FirstOrDefault();
+            return user;
+        }
+
+        public async Task<User> AddUser(User user)
+        { 
+            _mtContext.Users.Add(user);
+            await _mtContext.SaveChangesAsync();
             return user;
         }
 

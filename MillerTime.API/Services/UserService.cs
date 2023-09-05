@@ -8,16 +8,24 @@ namespace MillerTime.API.Services
     {
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository) { 
+        public UserService(IUserRepository userRepository) 
+        { 
             _userRepository = userRepository;
         }
 
-        public List<User> GetAllUsers() { 
+        public List<User> GetAllUsers() 
+        { 
             return _userRepository.GetAllUsers();
         }
 
-        public User GetUserById(int userId) { 
+        public User GetUserById(int userId) 
+        { 
             return _userRepository.GetUserById(userId);
+        }
+
+        public async Task<User> AddUser(User user) 
+        {
+            return await _userRepository.AddUser(user);
         }
 
     }

@@ -15,19 +15,20 @@ namespace MillerTime.API.Controllers
             _videoService = videoService;
         }
 
-
         [HttpGet]
         [Produces("application/json")]
         [Route("GetAllVideos")]
-        public IActionResult GetAllVideos() {
+        public IActionResult GetAllVideos() 
+        {
             return Ok(_videoService.GetAllVideos());
         }
 
         [HttpPost]
         [Produces("application/json")]
         [Route("AddVideo")]
-        public async Task AddVideo(Video video) {
-            await _videoService.AddVideo(video);
+        public async Task<Video> AddVideo(Video video) 
+        {
+            return await _videoService.AddVideo(video);
         }
 
     }

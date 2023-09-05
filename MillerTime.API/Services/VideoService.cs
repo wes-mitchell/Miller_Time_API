@@ -13,12 +13,14 @@ namespace MillerTime.API.Services
             _videoRepository = videoRepository;
         }
 
-        public List<Video> GetAllVideos() {
+        public List<Video> GetAllVideos() 
+        {
             return _videoRepository.GetAllVideos();
         }
 
-        public async Task AddVideo(Video video) {
-            await _videoRepository.AddVideo(video);
+        public async Task<Video> AddVideo(Video video) 
+        {
+            return await _videoRepository.AddVideo(video);
         }
 
     }

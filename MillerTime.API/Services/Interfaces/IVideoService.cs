@@ -6,6 +6,6 @@ namespace MillerTime.API.Services.Interfaces
     {
         List<Video> GetAllVideos();
 
-        Task AddVideo(Video video);
+        Task<Video> AddVideo(Video video);
     }
 }
