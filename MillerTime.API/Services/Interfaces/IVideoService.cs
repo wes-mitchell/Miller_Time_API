@@ -7,5 +7,7 @@ namespace MillerTime.API.Services.Interfaces
         List<Video> GetAllVideos();
 
         Task<Video> AddVideo(Video video);
+
+        string FormatVideoURL(string url);
     }
 }
