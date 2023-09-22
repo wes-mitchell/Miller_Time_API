@@ -53,11 +53,13 @@ namespace MillerTime.Tests
             var expectedEmbedURL = "https://www.youtube.com/embed/elevenchars";
             var expectedUserId = 3;
             var expectedId = 0;
+            var expectedIsApproved = false;
 
             _mockVideoRepo.Verify(prop => prop.AddVideo(It.Is<Video>(vid =>
                 vid.Id == expectedId &&
                 vid.EmbedUrl == expectedEmbedURL &&
-                vid.UserId == expectedUserId
+                vid.UserId == expectedUserId &&
+                vid.IsApproved == expectedIsApproved
                 )), Times.Once);
         }
     }

@@ -7,5 +7,7 @@
         public int UserId { get; set; }
 
         public string EmbedUrl { get; set; }
+
+        public bool IsApproved { get; set; }
     }
 }

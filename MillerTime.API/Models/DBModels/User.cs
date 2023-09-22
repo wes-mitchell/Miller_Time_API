@@ -8,6 +8,8 @@
 
         public string Email { get; set; }
 
-        public string FirebaseId { get; set; }
+        public bool IsAdmin { get; set; }
+
+        public string UserPassword { get; set; }
     }
 }
