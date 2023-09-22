@@ -25,6 +25,11 @@ namespace MillerTime.API.Repositories
             return user;
         }
 
+        public User GetUserByUserName(string userName) 
+        { 
+            return _mtContext.Users.Where(x => x.UserName == userName).FirstOrDefault();
+        }
+
         public async Task<User> AddUser(User user)
         { 
             _mtContext.Users.Add(user);
