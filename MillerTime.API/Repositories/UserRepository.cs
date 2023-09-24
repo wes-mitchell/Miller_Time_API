@@ -37,5 +37,12 @@ namespace MillerTime.API.Repositories
             return user;
         }
 
+        public (bool UserNameExists, bool EmailExists) CheckUserNameAndEmailExists(User user)
+        {
+            var userNameExists = GetUserByUserName(user.UserName) != null;
+            var emailExists = _mtContext.Users.FirstOrDefault(x => x.Email == user.Email) != null;
+            return (userNameExists, emailExists);
+        }
+
     }
 }

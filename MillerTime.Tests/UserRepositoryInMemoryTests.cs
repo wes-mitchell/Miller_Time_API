@@ -120,5 +120,29 @@ namespace MillerTime.Tests
                 != null;
             Assert.True(userExists);
         }
+
+        [Fact]
+        public void CheckUserNameAndEmailExists_UserNameAndEmailExists_ReturnsTrue()
+        {
+            var passedInUser = Helpers.CreateUser(username: "UserExists", email: "EmailExists");
+            var existingUser = Helpers.CreateUser(username: "UserExists", email: "EmailExists");
+            _context.Add(existingUser);
+            _context.SaveChangesAsync();
+            var (actualUserNameExists, actualEmailExists) = _classBeingTested.CheckUserNameAndEmailExists(passedInUser);
+            Assert.True(actualUserNameExists);
+            Assert.True(actualEmailExists);
+        }
+
+        [Fact]
+        public void CheckUserNameAndEmailExists_UserNameAndEmailDontExists_ReturnsFalse()
+        {
+            var passedInUser = Helpers.CreateUser(username: "UserDoesntExists", email: "EmailDoesntExists");
+            var existingUser = Helpers.CreateUser();
+            _context.Add(existingUser);
+            _context.SaveChangesAsync();
+            var (actualUserNameExists, actualEmailExists) = _classBeingTested.CheckUserNameAndEmailExists(passedInUser);
+            Assert.False(actualUserNameExists);
+            Assert.False(actualEmailExists);
+        }
     }
 }

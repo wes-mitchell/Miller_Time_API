@@ -11,6 +11,6 @@ namespace MillerTime.API.Repositories.Interfaces
         User GetUserByUserName(string userName);
 
         Task<User> AddUser(User user);
-
+        (bool UserNameExists, bool EmailExists) CheckUserNameAndEmailExists(User user);
     }
 }

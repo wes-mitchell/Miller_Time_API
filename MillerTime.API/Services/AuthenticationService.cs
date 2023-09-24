@@ -15,19 +15,27 @@ namespace MillerTime.API.Services
 
         public async Task CreateUser(User user)
         {
-            user.UserPassword = hashPassword(user.UserPassword);
+            var (userNameExists, emailExists) = _userRepository.CheckUserNameAndEmailExists(user);
+            if (userNameExists)
+            {
+                throw new Exception($"The username {user.UserName} already exists.");
+            }
+            if (emailExists)
+            {
+                throw new Exception($"There is already a user registered with the email {user.Email}.");
+            }
+            user.Password = hashPassword(user.Password);
             await _userRepository.AddUser(user);
         }
 
         public bool AuthenticateUser(User user)
         {
-            //TODO: Update the DB to only allow 1:1 UserNames
             var dbUser = _userRepository.GetUserByUserName(user.UserName);
             if (dbUser == null)
             {
                 throw new Exception($"A user was not found with the UserName {user.UserName}. Confirm the information you provided is correct.");
             }
-            var authenticated = verifyUserPassword(user.UserPassword, dbUser.UserPassword);
+            var authenticated = verifyUserPassword(user.Password, dbUser.Password);
             return authenticated;
         }
 
@@ -40,5 +48,6 @@ namespace MillerTime.API.Services
         {
             return BCrypt.Net.BCrypt.Verify(userPassword, dbHashedPassword);
         }
+
     }
 }
