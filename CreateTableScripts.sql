@@ -3,7 +3,7 @@ CREATE TABLE Users (
     UserName varchar(255) UNIQUE NOT NULL,
     Email varchar(255) UNIQUE NOT NULL,
     IsAdmin BIT NOT NULL,
-    UserPassword varchar(255) NOT NULL,
+    Password varchar(255) NOT NULL,
     CONSTRAINT PK_User PRIMARY KEY (Id)
 )
 

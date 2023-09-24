@@ -70,13 +70,13 @@ namespace MillerTime.Tests
             var actualUser = _classBeingTested.GetUserById(anyId);
             var expectedUser = new User 
             { 
-                Id = 456789258, Email = "donatello@tmnt.com", IsAdmin = false, UserName = "TestUserName", UserPassword ="test-pass123#" 
+                Id = 456789258, Email = "donatello@tmnt.com", IsAdmin = false, UserName = "TestUserName", Password ="test-pass123#" 
             };
 
             Assert.Equal(expectedUser.Id, actualUser.Id);
             Assert.Equal(expectedUser.Email, actualUser.Email);
             Assert.Equal(expectedUser.UserName, actualUser.UserName);
-            Assert.Equal(expectedUser.UserPassword, actualUser.UserPassword);
+            Assert.Equal(expectedUser.Password, actualUser.Password);
             Assert.False(actualUser.IsAdmin);
         }
 
@@ -94,13 +94,13 @@ namespace MillerTime.Tests
                 Email = "donatello@tmnt.com",
                 IsAdmin = false,
                 UserName = "Michaelangelo",
-                UserPassword = "test-pass123#"
+                Password = "test-pass123#"
             };
 
             Assert.Equal(expectedUser.Id, actualUser.Id);
             Assert.Equal(expectedUser.Email, actualUser.Email);
             Assert.Equal(expectedUser.UserName, actualUser.UserName);
-            Assert.Equal(expectedUser.UserPassword, actualUser.UserPassword);
+            Assert.Equal(expectedUser.Password, actualUser.Password);
             Assert.False(actualUser.IsAdmin);
         }
 
@@ -115,7 +115,7 @@ namespace MillerTime.Tests
             var userExists = _context.Users.First(user => user.Id == 1 && 
                 user.UserName == userName && 
                 user.Email == email &&
-                user.UserPassword == password &&
+                user.Password == password &&
                 user.IsAdmin == false) 
                 != null;
             Assert.True(userExists);

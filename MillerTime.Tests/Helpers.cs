@@ -5,6 +5,9 @@ namespace MillerTime.Tests
 {
     public class Helpers
     {
+
+        private static readonly string configPath = "C:\\Users\\wmdru\\workspace\\MillerTime.API\\MillerTime.Tests\\testSettings.json";
+
         public static Video CreateVideo(int userId = 1, string embedUrl = "https://m.youtube.com/watch?v=lalOy8Mbfdc")
         {
             return new Video
@@ -24,15 +27,14 @@ namespace MillerTime.Tests
                 UserName = username,
                 Email = email,
                 IsAdmin = isAdmin,
-                UserPassword = userPass
+                Password = userPass
             };
         }
 
         public static ConfigurationManager GetConfigFile()
         {
             var config = new ConfigurationManager();
-            config.AddJsonFile("C:\\Users\\wmdru\\workspace\\MillerTime.API\\MillerTime.Tests\\testSettings.json",
-                false, true).Build();
+            config.AddJsonFile(configPath, false, true).Build();
             return config;
         }
     }
