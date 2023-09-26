@@ -25,11 +25,23 @@ namespace MillerTime.API.Repositories
             return user;
         }
 
+        public User GetUserByUserName(string userName) 
+        { 
+            return _mtContext.Users.Where(x => x.UserName == userName).FirstOrDefault();
+        }
+
         public async Task<User> AddUser(User user)
         { 
             _mtContext.Users.Add(user);
             await _mtContext.SaveChangesAsync();
             return user;
+        }
+
+        public (bool UserNameExists, bool EmailExists) CheckUserNameAndEmailExists(User user)
+        {
+            var userNameExists = GetUserByUserName(user.UserName) != null;
+            var emailExists = _mtContext.Users.FirstOrDefault(x => x.Email == user.Email) != null;
+            return (userNameExists, emailExists);
         }
 
     }

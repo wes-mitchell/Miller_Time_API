@@ -5,7 +5,7 @@ using MillerTime.API.Services.Interfaces;
 namespace MillerTime.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class VideoController : ControllerBase
     {
         private readonly IVideoService _videoService;

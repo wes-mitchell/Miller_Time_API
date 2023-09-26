@@ -8,7 +8,9 @@ namespace MillerTime.API.Repositories.Interfaces
 
         User GetUserById(int id);
 
-        Task<User> AddUser(User user);
+        User GetUserByUserName(string userName);
 
+        Task<User> AddUser(User user);
+        (bool UserNameExists, bool EmailExists) CheckUserNameAndEmailExists(User user);
     }
 }
