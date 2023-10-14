@@ -27,7 +27,7 @@ builder.Services.AddDbContext<MillerTimeContext>(options =>
 });
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost3000", builder =>
+    options.AddDefaultPolicy(builder =>
     {
         builder
             .WithOrigins("http://localhost:3000")
@@ -54,7 +54,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors("AllowLocalhost3000");
+app.UseCors();
 
 app.UseAuthorization();
 
