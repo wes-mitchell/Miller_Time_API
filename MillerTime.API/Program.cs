@@ -1,11 +1,12 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using MillerTime.API.Context;
 using MillerTime.API.Repositories;
-using MillerTime.API.Repositories.Interfaces;
-using MillerTime.API.Services;
-using MillerTime.API.Services.Interfaces;
+using MillerTime.Services;
+using MillerTime.Services.Interfaces;
+using MillerTime.DAL.Context;
 using MillerTime.DAL.Helpers;
+using MillerTime.DAL.Repositories;
+using MillerTime.DAL.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,11 +38,15 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     await DockerInitializer.StartDocker();
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<MillerTimeContext>();
+        await SeedData.Seed(context);
+    }
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MillerTimeAPI v1"));

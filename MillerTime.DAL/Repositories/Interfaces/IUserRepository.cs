@@ -1,6 +1,6 @@
-﻿using MillerTime.API.Models.DBModels;
+﻿using MillerTime.Models.DBModels;
 
-namespace MillerTime.API.Repositories.Interfaces
+namespace MillerTime.DAL.Repositories.Interfaces
 {
     public interface IUserRepository
     {

@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using MillerTime.API.Models.DBModels;
+using MillerTime.Models.DBModels;
 
 namespace MillerTime.Tests
 {

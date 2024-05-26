@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MillerTime.API.Models.DBModels;
-using MillerTime.API.Services.Interfaces;
+using MillerTime.Models.DBModels;
+using MillerTime.Services.Interfaces;
 
 namespace MillerTime.API.Controllers
 {

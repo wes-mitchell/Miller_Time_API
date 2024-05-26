@@ -1,8 +1,9 @@
-﻿using MillerTime.API.Context;
-using MillerTime.API.Models.DBModels;
-using MillerTime.API.Repositories.Interfaces;
+﻿using MillerTime.DAL.Context;
+using MillerTime.Models.DBModels;
+using MillerTime.DAL.Repositories.Interfaces;
+using Microsoft.Extensions.Configuration;
 
-namespace MillerTime.API.Repositories
+namespace MillerTime.DAL.Repositories
 {
     public class UserRepository : BaseRepository, IUserRepository
     {

@@ -1,4 +1,4 @@
-﻿namespace MillerTime.API.Models.DBModels
+﻿namespace MillerTime.Models.DBModels
 {
     public class User
     {

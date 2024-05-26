@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MillerTime.API.Context;
-using MillerTime.API.Models.DBModels;
-using MillerTime.API.Repositories;
-using MillerTime.API.Repositories.Interfaces;
+using MillerTime.DAL.Context;
+using MillerTime.Models.DBModels;
+using MillerTime.DAL.Repositories;
+using MillerTime.DAL.Repositories.Interfaces;
 using Xunit;
 
 namespace MillerTime.Tests
