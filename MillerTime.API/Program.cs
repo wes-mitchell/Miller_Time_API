@@ -1,15 +1,15 @@
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using MillerTime.API.Context;
 using MillerTime.API.Repositories;
-using MillerTime.API.Repositories.Interfaces;
-using MillerTime.API.Services;
-using MillerTime.API.Services.Interfaces;
+using MillerTime.Services;
+using MillerTime.Services.Interfaces;
+using MillerTime.DAL.Context;
+using MillerTime.DAL.Helpers;
+using MillerTime.DAL.Repositories;
+using MillerTime.DAL.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -38,15 +38,17 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    await DockerInitializer.StartDocker();
+    using (var scope = app.Services.CreateScope())
+    {
+        var context = scope.ServiceProvider.GetRequiredService<MillerTimeContext>();
+        await SeedData.Seed(context);
+    }
     app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MillerTimeAPI v1"));
-    //app.UseExceptionHandler("/Error");
-    //// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    //app.UseHsts();
 }
 app.UseHsts();
 app.UseHttpsRedirection();

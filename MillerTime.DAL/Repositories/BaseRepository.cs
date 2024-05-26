@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.Linq.Expressions;
 
-namespace MillerTime.API.Repositories
+namespace MillerTime.DAL.Repositories
 {
     public abstract class BaseRepository
     {

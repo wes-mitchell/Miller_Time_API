@@ -1,8 +1,8 @@
-﻿using MillerTime.API.Models.DBModels;
-using MillerTime.API.Repositories.Interfaces;
-using MillerTime.API.Services.Interfaces;
+﻿using MillerTime.Models.DBModels;
+using MillerTime.DAL.Repositories.Interfaces;
+using MillerTime.Services.Interfaces;
 
-namespace MillerTime.API.Services
+namespace MillerTime.Services
 {
     public class AuthenticationService : IAuthenticationService
     {

@@ -1,7 +1,7 @@
-﻿using MillerTime.API.Models.DBModels;
-using MillerTime.API.Repositories.Interfaces;
-using MillerTime.API.Services;
-using MillerTime.API.Services.Interfaces;
+﻿using MillerTime.Models.DBModels;
+using MillerTime.DAL.Repositories.Interfaces;
+using MillerTime.Services;
+using MillerTime.Services.Interfaces;
 using Moq;
 using Xunit;
 

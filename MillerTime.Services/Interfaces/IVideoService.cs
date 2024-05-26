@@ -1,6 +1,6 @@
-﻿using MillerTime.API.Models.DBModels;
+﻿using MillerTime.Models.DBModels;
 
-namespace MillerTime.API.Services.Interfaces
+namespace MillerTime.Services.Interfaces
 {
     public interface IVideoService
     {
