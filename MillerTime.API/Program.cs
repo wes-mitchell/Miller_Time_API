@@ -10,6 +10,10 @@ using MillerTime.DAL.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.PropertyNamingPolicy = null;
+});
 builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -27,7 +31,7 @@ builder.Services.AddDbContext<MillerTimeContext>(options =>
 });
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(builder =>
+    options.AddPolicy("DEFAULT", builder =>
     {
         builder
             .WithOrigins("http://localhost:3000")
@@ -56,7 +60,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseCors();
+app.UseCors("DEFAULT");
 
 app.UseAuthorization();
 
