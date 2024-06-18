@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MillerTime.DAL.Context;
 
@@ -10,9 +11,11 @@ using MillerTime.DAL.Context;
 namespace MillerTime.DAL.Migrations
 {
     [DbContext(typeof(MillerTimeContext))]
-    partial class MillerTimeContextModelSnapshot : ModelSnapshot
+    [Migration("20240617165101_UpdateVideoModel")]
+    partial class UpdateVideoModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

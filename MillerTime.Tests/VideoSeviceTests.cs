@@ -24,40 +24,40 @@ namespace MillerTime.Tests
         [InlineData("https://www.youtube.com/watch?v=elevenchars")]
         [InlineData("https://youtube.com/watch?v=elevenchars")]
         [InlineData("https://m.youtube.com/watch?v=elevenchars")]
-        public void FormatVideoURL_FormatsURL_Successful(string embedURL)
+        public void GetVideoId_FormatsURL_Successful(string passedUrl)
         {
-            var actualURL = _classBeingTested.FormatVideoURL(embedURL);
-            var expectedURL = "https://www.youtube.com/embed/elevenchars";
-            Assert.Equal(expectedURL, actualURL);
+            var actualURL = _classBeingTested.GetVideoId(passedUrl);
+            var expectedYouTubeVideoId = "elevenchars";
+            Assert.Equal(expectedYouTubeVideoId, actualURL);
         }
 
         [Fact]
-        public void FormatVideoURL_VideoIDNotElevenCharacters_ThrowsException()
+        public void GetVideoId_VideoIDNotElevenCharacters_ThrowsException()
         {
             var invalidIdURL = "https://m.youtube.com/watch?v=notelevencharacters";
-            Assert.Throws<Exception>(() => _classBeingTested.FormatVideoURL(invalidIdURL));
+            Assert.Throws<Exception>(() => _classBeingTested.GetVideoId(invalidIdURL));
         }
 
         [Fact]
-        public void FormatVideoURL_EmbedURLIncorrectFormat_ThrowsException()
+        public void GetVideoId_PassedURLIncorrectFormat_ThrowsException()
         {
             var invalidFormatURL = "https://m.notValid.com/watch?v=elevenchars";
-            Assert.Throws<Exception>(() => _classBeingTested.FormatVideoURL(invalidFormatURL));
+            Assert.Throws<Exception>(() => _classBeingTested.GetVideoId(invalidFormatURL));
         }
 
         [Fact]
         public async void AddVideo_PassesFormatting_SavesCorrectly()
         {
-            var video = Helpers.CreateVideo(userId: 3, embedUrl: _validurl);
+            var video = Helpers.CreateVideo(userId: 3, youTubeVideoId: _validurl);
             await _classBeingTested.AddVideo(video);
-            var expectedEmbedURL = "https://www.youtube.com/embed/elevenchars";
+            var expectedYouTubeVideoId = "elevenchars";
             var expectedUserId = 3;
             var expectedId = 0;
             var expectedIsApproved = false;
 
             _mockVideoRepo.Verify(prop => prop.AddVideo(It.Is<Video>(vid =>
                 vid.Id == expectedId &&
-                vid.EmbedUrl == expectedEmbedURL &&
+                vid.YoutubeVideoId == expectedYouTubeVideoId &&
                 vid.UserId == expectedUserId &&
                 vid.IsApproved == expectedIsApproved
                 )), Times.Once);

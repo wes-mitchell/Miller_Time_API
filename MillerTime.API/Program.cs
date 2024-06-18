@@ -34,7 +34,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("DEFAULT", builder =>
     {
         builder
-            .WithOrigins("http://localhost:3000")
+            .WithOrigins("http://localhost:3000", "https://wes-mitchell.github.io")
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

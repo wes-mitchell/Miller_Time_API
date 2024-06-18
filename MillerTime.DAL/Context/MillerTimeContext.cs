@@ -11,5 +11,10 @@ namespace MillerTime.DAL.Context
 
         public DbSet<Video> Videos { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<User>().ToTable("Users");
+            builder.Entity<Video>().ToTable("Videos");
+        }
     }
 }

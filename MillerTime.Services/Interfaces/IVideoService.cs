@@ -8,6 +8,6 @@ namespace MillerTime.Services.Interfaces
 
         Task<Video> AddVideo(Video video);
 
-        string FormatVideoURL(string url);
+        string GetVideoId(string url);
     }
 }

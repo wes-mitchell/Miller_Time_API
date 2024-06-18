@@ -7,6 +7,7 @@ namespace MillerTime.Services
     public class VideoService : IVideoService
     {
         private readonly IVideoRepository _videoRepository;
+        private readonly int YoutubeVideoIdLength = 11;
 
         public VideoService(IVideoRepository videoRepository)
         {
@@ -20,21 +21,19 @@ namespace MillerTime.Services
 
         public async Task<Video> AddVideo(Video video)
         {
-            video.EmbedUrl = FormatVideoURL(video.EmbedUrl);
+            video.YoutubeVideoId = GetVideoId(video.YoutubeVideoId);
             return await _videoRepository.AddVideo(video);
         }
 
-        public string FormatVideoURL(string url)
+        public string GetVideoId(string url)
         {
             var requiredIncomingFormat = "youtube.com/watch?v=";
-            var youtubeVideoIdLength = 11;
             if (url.Contains(requiredIncomingFormat))
             {
                 var videoId = url.Split("=")[1];
-                if (videoId.Count() == youtubeVideoIdLength)
+                if (videoId.Count() == YoutubeVideoIdLength)
                 {
-                    var embedURL = $"https://www.youtube.com/embed/{videoId}";
-                    return embedURL;
+                    return videoId;
                 }
                 throw new Exception($"The video ID {videoId} does not match the current Youtube format.");
             }
