@@ -6,7 +6,7 @@
 
         public int UserId { get; set; }
 
-        public string EmbedUrl { get; set; }
+        public string YoutubeVideoId { get; set; }
 
         public bool IsApproved { get; set; }
     }

@@ -8,13 +8,13 @@ namespace MillerTime.Tests
 
         private static readonly string configPath = "C:\\Users\\wmdru\\workspace\\MillerTime.API\\MillerTime.Tests\\testSettings.json";
 
-        public static Video CreateVideo(int userId = 1, string embedUrl = "https://m.youtube.com/watch?v=lalOy8Mbfdc")
+        public static Video CreateVideo(int userId = 1, string youTubeVideoId = "https://m.youtube.com/watch?v=lalOy8Mbfdc")
         {
             return new Video
             {
                 Id = 0,
                 UserId = userId,
-                EmbedUrl = embedUrl
+                YoutubeVideoId = youTubeVideoId
             };
         }
 
