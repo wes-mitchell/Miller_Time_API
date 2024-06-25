@@ -50,10 +50,12 @@ if (app.Environment.IsDevelopment())
         var context = scope.ServiceProvider.GetRequiredService<MillerTimeContext>();
         await SeedData.Seed(context);
     }
-    app.UseDeveloperExceptionPage();
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MillerTimeAPI v1"));
 }
+
+app.UseDeveloperExceptionPage();
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MillerTimeAPI v1"));
+
 app.UseHsts();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -62,7 +64,7 @@ app.UseRouting();
 
 app.UseCors("DEFAULT");
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
