@@ -5,7 +5,7 @@ using MillerTime.Services.Interfaces;
 namespace MillerTime.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class VideoController : ControllerBase
     {
         private readonly IVideoService _videoService;
@@ -17,7 +17,6 @@ namespace MillerTime.API.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        [Route("GetAllVideos")]
         public IActionResult GetAllVideos() 
         {
             return Ok(_videoService.GetAllVideos());
@@ -25,7 +24,6 @@ namespace MillerTime.API.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        [Route("AddVideo")]
         public async Task<Video> AddVideo(Video video) 
         {
             return await _videoService.AddVideo(video);

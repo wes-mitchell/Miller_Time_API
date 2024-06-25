@@ -5,7 +5,7 @@ using MillerTime.Services.Interfaces;
 namespace MillerTime.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
@@ -17,7 +17,6 @@ namespace MillerTime.API.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        [Route("GetAllUsers")]
         public IActionResult GetAllUsers()
         {
             return Ok(_userService.GetAllUsers());
@@ -25,7 +24,6 @@ namespace MillerTime.API.Controllers
 
         [HttpGet]
         [Produces("application/json")]
-        [Route("GetUserById")]
         public IActionResult GetUserById(int userId)
         {
             return Ok(_userService.GetUserById(userId));
@@ -33,7 +31,6 @@ namespace MillerTime.API.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        [Route("AddUser")]
         public async Task<User> AddUser(User user)
         {
             return await _userService.AddUser(user);

@@ -13,8 +13,8 @@ namespace MillerTime.DAL.Repositories
 
         public BaseRepository(IConfiguration configuration, DbContext context)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");
-            this._context = context;
+            _connectionString = configuration["AZURE_SQL_CONNECTIONSTRING"];
+            _context = context;
         }
 
         public virtual async Task<bool> SaveChangesAsync()

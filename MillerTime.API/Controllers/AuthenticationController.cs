@@ -5,7 +5,7 @@ using MillerTime.Services.Interfaces;
 namespace MillerTime.API.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class AuthenticationController : ControllerBase
     {
         private readonly IAuthenticationService _authService;
@@ -18,7 +18,6 @@ namespace MillerTime.API.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        [Route("CreateUser")]
         public async Task CreateUser(User user)
         {
             await _authService.CreateUser(user);
@@ -26,7 +25,6 @@ namespace MillerTime.API.Controllers
 
         [HttpPost]
         [Produces("application/json")]
-        [Route("AuthenticateUser")]
         public bool AuthenticateUser(User user) {
             return _authService.AuthenticateUser(user);
         }

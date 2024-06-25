@@ -27,7 +27,7 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IAuthenticationService, AuthenticationService>();
 builder.Services.AddDbContext<MillerTimeContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:DefaultConnection"]);
+    options.UseSqlServer(builder.Configuration["AZURE_SQL_CONNECTIONSTRING"]);
 });
 builder.Services.AddCors(options =>
 {
