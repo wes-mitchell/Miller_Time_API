@@ -5,12 +5,12 @@ using Microsoft.Azure.WebJobs;
 
 namespace MillerTime.Functions
 {
-    public static class KeepWarmFunction
+    public static class KeepWarm
     {
         private static readonly HttpClient _httpClient = new();
         private static readonly string healthEndpoint = "https://miller-time-api.azurewebsites.net/api/Health/CheckHealth";
 
-        [FunctionName("KeepWarmFunction")]
+        [FunctionName("KeepWarm")]
         public async static Task RunAsync([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer)
         {
             try
